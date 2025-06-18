@@ -28,5 +28,6 @@ final class SplashViewController: BaseViewController {
     }
 
     private func navigateToMapChoice() {
+        Router.shared.openAsRoot(viewC: MapSelectionViewController())
     }
 }
