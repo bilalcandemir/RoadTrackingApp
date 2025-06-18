@@ -12,10 +12,15 @@ enum MapType {
     case apple, google
 }
 
+enum UserTrackingOption {
+    case start, stop
+}
+
 final class TrackingViewModel {
 
     // MARK: Properties
     var selectedMapType: MapType = .apple
+    private var shouldTracking: UserTrackingOption = .start
     private lazy var locationManager = LocationManager()
 
     init() {
@@ -35,6 +40,18 @@ final class TrackingViewModel {
 
     func viewControllerDidLoad() {
         locationManager.startTracking()
+    }
+
+    func changeTrackingOption() {
+        if shouldTracking == .start {
+            shouldTracking = .stop
+        } else {
+            shouldTracking = .start
+        }
+    }
+
+    func getTrackingOption() -> UserTrackingOption {
+        shouldTracking
     }
 }
 

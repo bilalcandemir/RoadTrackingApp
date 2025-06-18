@@ -12,6 +12,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TrackingViewController" customModule="RoadTracking" customModuleProvider="target">
             <connections>
+                <outlet property="mapView" destination="3Qz-gb-KEb" id="fWa-ac-Xpu"/>
+                <outlet property="stopButtonImage" destination="76I-u5-UBS" id="U3L-qv-Dsf"/>
+                <outlet property="stopButtonLabel" destination="A6C-Xq-crG" id="h5M-1U-0zU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -49,6 +52,9 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bjD-rG-wju">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <connections>
+                                                <action selector="stopTrackingButtonAction:" destination="-1" eventType="touchUpInside" id="4cv-h2-aFR"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -82,6 +88,9 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DYW-IX-1zf">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <connections>
+                                                <action selector="clearLocationsButtonAction:" destination="-1" eventType="touchUpInside" id="SWA-MH-tuo"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
