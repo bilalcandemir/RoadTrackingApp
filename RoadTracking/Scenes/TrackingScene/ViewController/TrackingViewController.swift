@@ -32,10 +32,10 @@ final class TrackingViewController: BaseViewController {
     private func trackingOptionStateChange() {
         switch viewModel.getTrackingOption() {
         case .started:
-            stopButtonLabel.text = "Stop"
+            stopButtonLabel.text = "Stop Tracking"
             stopButtonImage.image = UIImage(systemName: "stop.circle")
         case .stopped:
-            stopButtonLabel.text = "Start"
+            stopButtonLabel.text = "Start Tracking"
             stopButtonImage.image = UIImage(systemName: "play.circle")
         }
     }

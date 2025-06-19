@@ -17,6 +17,8 @@ final class TrackingViewModel {
     private var coordinates: [LocationPoint] = []
 
     // MARK: Methods
+
+    // This method gives the map view to view controller
     func getMapView() -> UIView {
         let appleMapContainerView = AppleMapContainerView(viewModel: appleMapContainerViewModel)
         if let coordinates = LocationSaveManager.shared.getCoordinates() {
@@ -25,11 +27,13 @@ final class TrackingViewModel {
         return appleMapContainerView
     }
 
+    // This method calls from TrakcingVC when view did load and starts tracking
     func viewControllerDidLoad() {
         locationManager.startTracking()
         locationManager.delegate = self
     }
 
+    // This method controls the logic for user's tracking choice
     func changeTrackingOption() {
         if trackingOption == .started {
             trackingOption = .stopped
@@ -50,6 +54,7 @@ final class TrackingViewModel {
 }
 
 extension TrackingViewModel: LocationManagerDelegate {
+    // This method triggers when user changes his location 100 meters
     func didUpdateLocation(_ location: CLLocation,_ title: String) {
         coordinates.append(
             LocationPoint(

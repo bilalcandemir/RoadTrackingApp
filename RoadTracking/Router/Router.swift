@@ -12,35 +12,17 @@ final class Router {
 }
 
 extension Router {
-    func popToRootViewController(animated: Bool = true) {
-        if let topViewController = UIApplication.topViewController,
-           let navigationController = topViewController.navigationController {
-            navigationController.popToRootViewController(animated: animated)
-        }
-    }
-
     func openAsRoot(viewC: UIViewController) {
         guard let window = UIApplication.shared.delegate?.window as? UIWindow else { return }
         window.rootViewController = viewC
         window.makeKeyAndVisible()
     }
 
-    func push(viewC: UIViewController, fromViewController: UIViewController? = nil,
-              animated: Bool = true, shouldPopToRoot: Bool = false) {
-        guard let navigationController =
-                fromViewController?.navigationController ?? self.getCurrentNavigationController() else {
-            return }
-        if shouldPopToRoot {
-            navigationController.popToRootViewController(animated: false)
-        }
-        navigationController.pushViewController(viewC, animated: animated)
-    }
-
     func present(viewC: UIViewController, fromViewController: UIViewController? = nil,
                  animated: Bool = true,
                  isWithNavigationController: Bool = false) {
         guard let navigationController =
-                fromViewController?.navigationController ?? self.getCurrentNavigationController() else {
+                fromViewController?.navigationController else {
             return }
         if isWithNavigationController {
             let newC = UINavigationController.init(rootViewController: viewC)
@@ -49,13 +31,5 @@ extension Router {
         } else {
             navigationController.present(viewC, animated: animated)
         }
-    }
-
-    func getCurrentNavigationController() -> UINavigationController? {
-        guard let topViewController = UIApplication.topViewController else { return nil }
-        if let navigationController = topViewController.navigationController {
-            return navigationController
-        }
-        return nil
     }
 }
