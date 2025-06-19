@@ -18,6 +18,7 @@ final class SplashViewController: BaseViewController {
         animateLogo()
     }
 
+    // MARK: - Private Methods
     private func animateLogo() {
         UIView.animate(withDuration: 1.5, delay: 3, options: [.curveEaseInOut], animations: { [weak self] in
             self?.appIconImageView.transform = CGAffineTransform(scaleX: 3.0, y: 3.0)
