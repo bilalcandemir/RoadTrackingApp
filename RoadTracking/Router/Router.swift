@@ -20,9 +20,8 @@ extension Router {
     }
 
     func openAsRoot(viewC: UIViewController) {
-        let navVC = UINavigationController.init(rootViewController: viewC)
         guard let window = UIApplication.shared.delegate?.window as? UIWindow else { return }
-        window.rootViewController = navVC
+        window.rootViewController = viewC
         window.makeKeyAndVisible()
     }
 
