@@ -95,4 +95,12 @@ final class AppleMapContainerViewModel {
         annotation.coordinate = coordinate
         mapView.addAnnotation(annotation)
     }
+
+    func setupLoadedMarks(coordinates: [LocationPoint]) {
+        for point in coordinates {
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = CLLocationCoordinate2D(latitude: point.latitude, longitude: point.longitude)
+            mapView.addAnnotation(annotation)
+        }
+    }
 }
