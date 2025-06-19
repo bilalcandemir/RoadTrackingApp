@@ -34,9 +34,11 @@ final class TrackingViewController: BaseViewController {
         case .started:
             stopButtonLabel.text = "Stop Tracking"
             stopButtonImage.image = UIImage(systemName: "stop.circle")
+            trackingStateButtonContainerView.backgroundColor = .blue
         case .stopped:
             stopButtonLabel.text = "Start Tracking"
             stopButtonImage.image = UIImage(systemName: "play.circle")
+            trackingStateButtonContainerView.backgroundColor = .systemGreen
         }
     }
 
