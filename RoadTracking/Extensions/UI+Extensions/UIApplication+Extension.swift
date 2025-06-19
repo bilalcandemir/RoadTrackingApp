@@ -7,6 +7,7 @@
 
 import UIKit
 
+// This extension gives us the top view controller of the current window
 extension UIApplication {
     static var topViewController: UIViewController? {
         guard let rootVC = UIApplication.shared.connectedScenes

@@ -8,7 +8,7 @@
 import CoreLocation
 
 protocol LocationManagerDelegate: AnyObject {
-    func didUpdateLocation(_ location: CLLocation)
+    func didUpdateLocation(_ location: CLLocation,_ title: String)
 }
 
 final class LocationManager: NSObject, CLLocationManagerDelegate {
@@ -16,6 +16,7 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
     // MARK: - Properties
     private let locationManager = CLLocationManager()
     weak var delegate: LocationManagerDelegate?
+    var addressManager = AddressManager()
 
     // MARK: - Life Cycle
     override init() {
@@ -39,6 +40,8 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let latest = locations.last else { return }
-        delegate?.didUpdateLocation(latest)
+        addressManager.resolveAddress(for: latest) { [weak self] title in
+            self?.delegate?.didUpdateLocation(latest, title ?? "")
+        }
     }
 }
