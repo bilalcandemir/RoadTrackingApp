@@ -24,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Qz-gb-KEb">
-                    <rect key="frame" x="0.0" y="59" width="393" height="793"/>
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g2Q-Bw-Ahu">
@@ -135,7 +135,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zyn-6N-tdk" secondAttribute="trailing" id="eDq-i9-eIQ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="g2Q-Bw-Ahu" secondAttribute="trailing" constant="8" id="ju6-S7-2Is"/>
                 <constraint firstItem="zyn-6N-tdk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="myf-r0-TnK"/>
-                <constraint firstItem="3Qz-gb-KEb" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="rnt-V6-ic7"/>
+                <constraint firstItem="3Qz-gb-KEb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="rnt-V6-ic7"/>
                 <constraint firstAttribute="bottom" secondItem="3Qz-gb-KEb" secondAttribute="bottom" id="tnj-wZ-dSR"/>
                 <constraint firstItem="3Qz-gb-KEb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="zMJ-qx-gfk"/>
             </constraints>

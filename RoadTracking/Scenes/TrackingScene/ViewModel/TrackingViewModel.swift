@@ -8,31 +8,33 @@
 import UIKit
 import CoreLocation
 
+struct LocationPoint: Codable {
+    let latitude: Double
+    let longitude: Double
+}
+
 enum MapType {
     case apple, google
 }
 
 enum UserTrackingOption {
-    case start, stop
+    case started, stopped
 }
 
 final class TrackingViewModel {
 
     // MARK: Properties
     var selectedMapType: MapType = .apple
-    private var shouldTracking: UserTrackingOption = .start
+    private var trackingOption: UserTrackingOption = .started
     private lazy var locationManager = LocationManager()
-
-    init() {
-        locationManager.delegate = self
-    }
+    private lazy var appleMapContainerViewModel = AppleMapContainerViewModel()
 
     // MARK: Methods
     func getMapView() -> UIView {
         // TODO: This will be return selected map view
         switch selectedMapType {
         case .apple:
-            return .init()
+            return AppleMapContainerView(viewModel: appleMapContainerViewModel)
         case .google:
             return .init()
         }
@@ -40,23 +42,29 @@ final class TrackingViewModel {
 
     func viewControllerDidLoad() {
         locationManager.startTracking()
+        locationManager.delegate = self
     }
 
     func changeTrackingOption() {
-        if shouldTracking == .start {
-            shouldTracking = .stop
+        if trackingOption == .started {
+            trackingOption = .stopped
         } else {
-            shouldTracking = .start
+            trackingOption = .started
         }
     }
 
     func getTrackingOption() -> UserTrackingOption {
-        shouldTracking
+        trackingOption
     }
 }
 
 extension TrackingViewModel: LocationManagerDelegate {
     func didUpdateLocation(_ location: CLLocation) {
-        
+        switch selectedMapType {
+        case .apple:
+            appleMapContainerViewModel.addMarkOnTheMap(coordinate: location.coordinate)
+        case .google:
+            break
+        }
     }
 }
